@@ -4,6 +4,7 @@ import useAuth from '../../Hooks/useAuth';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -76,6 +77,20 @@ const Register = () => {
 
     return (
     <div className="min-h-screen flex items-center justify-center bg-[#fff1f1] py-12 px-4">
+
+      <Helmet>
+        <title>Register | Blood Wave</title>
+        <meta
+          name="description"
+          content="Create a new account on Blood Wave to donate or request blood easily."
+        />
+        <meta
+          name="keywords"
+          content="register, blood wave, blood donation, create account"
+        />
+        <link rel="canonical" href="https://blood-wave.netlify.app/register" />
+      </Helmet>
+
         <div className="w-full max-w-xl bg-gradient-to-br to-rose-300 from-red-200  p-8 rounded-xl shadow-lg">
             <h2 className="text-3xl font-bold text-[#e50914] mb-6 text-center">Register on Blood-Wave</h2>
 

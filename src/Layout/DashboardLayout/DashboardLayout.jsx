@@ -5,6 +5,7 @@ import useAdmin from '../../Hooks/useAdmin';
 import useDonor from '../../Hooks/useDonor';
 import useMember from '../../Hooks/useMember';
 import './DashboardLayout.css'
+import { Helmet } from 'react-helmet';
 
 const DashboardLayout = () => {
 
@@ -17,6 +18,14 @@ const DashboardLayout = () => {
 
     return (
         <div className='bg-[#fff1f1] text-red-500 font-medium  min-h-screen max-w-7xl mx-auto  flex'>
+
+            <Helmet>
+            <title>
+                Blood Wave || Dashboard - {isAdmin ? 'Admin' : isDonor ? 'Donor' : isMember ? 'Member' : 'User'}
+            </title>
+            <meta name="description" content="Blood Wave dashboard for managing your profile and requests." />
+            </Helmet>
+
             {/* Dashboard Menu */}
             <div className='w-[22%] bg-gradient-to-br to-rose-300 from-red-200 '>
                 <div className='h-16 flex justify-center items-center gap-2 border-b-2 border-red-500 hover:text-white hover:font-semibold duration-500'>

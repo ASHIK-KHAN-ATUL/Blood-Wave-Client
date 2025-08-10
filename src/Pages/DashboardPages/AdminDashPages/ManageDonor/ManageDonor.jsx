@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { formatDistanceToNow } from 'date-fns';
+import { Helmet } from 'react-helmet';
 
 const ManageDonor = () => {
 
@@ -27,6 +28,20 @@ const ManageDonor = () => {
 
     return (
         <div className="p-4  ">
+
+        <Helmet>
+            <title>Manage Donors | Blood Wave</title>
+            <meta
+            name="description"
+            content="Manage all registered blood donors on Blood Wave platform efficiently."
+            />
+            <meta
+            name="keywords"
+            content="manage donors, blood wave, blood donation, donor management"
+            />
+            <link rel="canonical" href="https://blood-wave.netlify.app" />
+        </Helmet>
+
             <h2 className="text-2xl font-bold mb-4">All Donor ({allDonor.length})</h2>
 
             <div className="overflow-x-auto max-h-screen overflow-y-auto">

@@ -3,6 +3,7 @@ import React from 'react';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const AllUser = () => {
 
@@ -60,6 +61,20 @@ const AllUser = () => {
 
     return (
         <div className="p-4">
+
+        <Helmet>
+            <title>All Users | Blood Wave Admin Dashboard</title>
+            <meta
+            name="description"
+            content="View all registered users in Blood Wave admin dashboard. Manage donors, members and admins."
+            />
+            <meta
+            name="keywords"
+            content="blood wave, all users, admin dashboard, blood donors, members"
+            />
+            <link rel="canonical" href="https://blood-wave.netlify.app" />
+        </Helmet>
+
             <h2 className="text-2xl font-bold mb-4">All Users ({allUser.length})</h2>
 
             <div className="overflow-x-auto max-h-screen overflow-y-auto">

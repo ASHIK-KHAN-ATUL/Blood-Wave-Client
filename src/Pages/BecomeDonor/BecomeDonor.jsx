@@ -4,6 +4,7 @@ import useAuth from '../../Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const BecomeDonor = () => {
 
@@ -57,6 +58,17 @@ const BecomeDonor = () => {
 
     return (
     <div className=" md:max-w-3xl m-2 md:mx-auto p-6 bg-gradient-to-br to-rose-400 from-red-200   shadow-lg md:rounded-md  md:my-10 text-black">
+
+      <Helmet>
+        <title>Become a Blood Donor | Blood Wave</title>
+        <meta
+          name="description"
+          content="Join Blood Wave as a blood donor and help save lives. Fill the form to become a registered donor."
+        />
+        <meta name="keywords" content="blood donor, blood donation, become donor, blood wave" />
+        <link rel="canonical" href="https://blood-wave.netlify.app/dashboard/becomeDonor" />
+      </Helmet>
+
       <h2 className="text-lg mb-8 md:text-2xl font-bold text-red-600 md:mb-6 text-center">Become a Blood Donor</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 text-xs grid grid-cols-1  md:grid-cols-2 md:gap-5 md:space-y-0">

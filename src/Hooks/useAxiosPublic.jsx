@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const axiosPublic = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://blood-wave-server-six.vercel.app'
 })
 
 const useAxiosPublic = () => {

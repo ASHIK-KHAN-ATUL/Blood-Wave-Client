@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet';
 
 const ProfilePage = () => {
 
@@ -39,6 +40,22 @@ const ProfilePage = () => {
 
     return (
         <div className='p-2'>
+
+
+            <Helmet>
+                <title>My Profile | Blood Wave</title>
+                <meta
+                name="description"
+                content="View and update your Blood Wave profile information easily."
+                />
+                <meta
+                name="keywords"
+                content="profile, user profile, blood wave, update profile"
+                />
+                <link rel="canonical" href="https://blood-wave.netlify.app" />
+            </Helmet>
+
+
             <div className="max-w-3xl mx-auto p-6 bg-gradient-to-br from-red-500/50 via-white/50  to-sky-500/50 rounded shadow-md  mt-10 relative">
 
             {/* edit btn */}

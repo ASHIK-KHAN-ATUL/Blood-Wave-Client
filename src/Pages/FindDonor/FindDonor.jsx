@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useAuth from '../../Hooks/useAuth';
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
+import { Helmet } from 'react-helmet';
 
 
 const FindDonor = () => {
@@ -121,6 +122,20 @@ const FindDonor = () => {
 
     return (
         <div className='pb-20'>
+
+
+            <Helmet>
+                <title>Find Blood Donors Near You | Blood Wave</title>
+                <meta
+                name="description"
+                content="Search and find blood donors near you quickly and easily on Blood Wave. Filter donors by blood group and location."
+                />
+                <meta
+                name="keywords"
+                content="find blood donor, blood group search, blood donation, emergency blood donor, blood wave"
+                />
+                <link rel="canonical" href="https://blood-wave.netlify.app/donors" />
+            </Helmet>
 
             {/* Input blood grp  and  district */}
             <div className='py-10 w-full flex flex-col md:flex-row justify-center gap-5 px-5 md:px-10 bg-rose-200 mb-10 '>
