@@ -25,11 +25,18 @@ const MyBloodRequest = () => {
     });
 
 
-    if (isLoading) return <div>Loading your requests...</div>;
+    if (isLoading){
+                return (
+            <div className="flex flex-col justify-center items-center py-10 min-h-screen ">
+                <p className='text-red-500 font-semibold text-2xl'>Loading My Request Page</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
+            </div>
+        )
+    }
     if (isError) return <div>Error loading requests.</div>;
 
     return (
-    <div className=" mx-auto p-2 md:p-6 h-full ">
+    <div className=" mx-auto p-2 md:p-6 h-full text-black">
       <h2 className="text-3xl font-bold mb-6 text-center">My Blood Requests</h2>
 
       {/* Filter Buttons */}
@@ -38,14 +45,14 @@ const MyBloodRequest = () => {
           <button
             key={status}
             onClick={() => setFilterStatus(status)}
-            className={`px-4 py-2 rounded font-semibold transition cursor-pointer
+            className={`px-4 py-2 rounded font-semibold transition cursor-pointer capitalize
               ${
                 filterStatus === status
                   ? 'bg-red-600 text-white shadow-md'
                   : 'bg-red-100 text-red-700 hover:bg-red-300'
               }`}
           >
-            {status.charAt(0).toUpperCase() + status.slice(1)}
+            {status}
           </button>
         ))}
       </div>
@@ -56,7 +63,7 @@ const MyBloodRequest = () => {
       ) : (
         <ul className="space-y-6 max-h-lvh overflow-y-auto ">
           {filteredRequests.map((req) => (
-            <li key={req._id} className="flex flex-col sm:flex-row gap-5 p-5  shadow-lg bg-gradient-to-r from-red-100 via-white to-red-100 hover:shadow-lg transition duration-300 items-center border-2 border-red-400/10 text-sm">
+            <li key={req._id} className="flex flex-col sm:flex-row gap-5 p-5  shadow-lg bg-gradient-to-br from-[#fa5d5d62] via-[#ffe5f183] to-[#b7f5f59a] hover:shadow-lg transition duration-300 items-center border-2 border-red-400/10 text-sm">
             
             {/* Donor Image */}
             <img
@@ -69,9 +76,19 @@ const MyBloodRequest = () => {
             <div className="w-full grid md:grid-cols-2">
                 <h3 className="text-xl font-bold text-red-700 mb-1">{req.recivername || 'N/A'}</h3>
                 <p className="text-gray-700 mb-1"><strong>Email:</strong> {req.reciveremail || 'N/A'}</p>
-                <p className="text-gray-600 mb-1"><strong>Message:</strong> {req.message || 'N/A'}</p>
-                <p className="text-gray-600 mb-1"><strong>Emergency Type:</strong> {req.emergencyType || 'N/A'}</p>
-                <p className="text-gray-600 mb-1"><strong>Need Date:</strong> {req.needDate ? new Date(req.needDate).toLocaleDateString() : 'N/A'}</p>
+                <p className=" mb-1"><strong>Message:</strong> {req.message || 'N/A'}</p>
+                <p className=" mb-1"><strong>Emergency Type:</strong> {req.emergencyType || 'N/A'}</p>
+                <p className=" mb-1"><strong>Need Date:</strong> {req.needDate ? new Date(req.needDate).toLocaleDateString() : 'N/A'}</p>
+                <p className=" mb-1"><strong>Request Time:</strong> {req.requestTime ? new Date(req.requestTime).toLocaleDateString('en-GB', {    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',}) : 'N/A'}</p>
+                <p className=" mb-1"><strong>Status Channge Time :</strong> {req.statusTime ? new Date(req.statusTime).toLocaleDateString('en-GB', {    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',}) : 'No Response From Donor'}</p>
                 
                 {/* Status Badge */}
                 <div className={` mt-2 px-3 py-1 rounded-full text-sm font-semibold w-20

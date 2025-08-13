@@ -182,8 +182,8 @@ const FindDonor = () => {
                 donors?.data?.map(donor => (
                 <div key={donor._id} className="relative bg-gradient-to-br from-red-300 via-black/0 to-red-300 text-white rounded-sm shadow-lg border border-red-200 p-5 w-full max-w-md mx-auto flex flex-col justify-between">
                     {/* Availability Badge */}
-                    <span className="absolute top-1 right-1 border border-green-300 bg-green-100 text-green-500 text-xs font-semibold px-3 py-1 rounded-full shadow-sm ">
-                        Available
+                    <span className={`absolute top-1 right-1 border text-xs capitalize font-semibold px-3 py-1 rounded-full shadow-sm  ${donor?.availability === 'available' ? ' border-green-300 bg-green-100 text-green-500' : ' border-red-300 bg-red-100 text-red-500'}`}>
+                        {donor.availability}
                     </span>
 
                     {/* Donor Info */}

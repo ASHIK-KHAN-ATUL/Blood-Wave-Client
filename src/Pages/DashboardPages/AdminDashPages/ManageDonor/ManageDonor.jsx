@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { formatDistanceToNow } from 'date-fns';
 import { Helmet } from 'react-helmet';
+import CountUp from 'react-countup';
 
 const ManageDonor = () => {
 
@@ -19,6 +20,15 @@ const ManageDonor = () => {
     })
     console.log(allDonor);
 
+    if (isLoading){
+                return (
+            <div className="flex flex-col justify-center items-center py-10 min-h-screen ">
+                <p className='text-red-500 font-semibold text-2xl'>Loading Manage User Page</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
+            </div>
+        )
+    }
+
 
     const handleDetails = async(user) =>{
         console.log(user);
@@ -27,7 +37,7 @@ const ManageDonor = () => {
     }
 
     return (
-        <div className="p-4  ">
+        <div className="p-4  text-black">
 
         <Helmet>
             <title>Manage Donors | Blood Wave</title>
@@ -42,7 +52,7 @@ const ManageDonor = () => {
             <link rel="canonical" href="https://blood-wave.netlify.app" />
         </Helmet>
 
-            <h2 className="text-2xl font-bold mb-4">All Donor ({allDonor.length})</h2>
+            <h2 className="text-xl font-bold mb-4 text-right"> All Donor (<CountUp end={allDonor.length} duration={2} />)  </h2>
 
             <div className="overflow-x-auto max-h-screen overflow-y-auto">
                 <table className="table  w-full border text-black text-sm ">
@@ -100,11 +110,11 @@ const ManageDonor = () => {
             </div>
 
             {showModal && selectedDonor && (
-                <div className="fixed inset-0 bg-black/80 bg-opacity-50 flex items-center justify-center z-50">
-                <div className="bg-gradient-to-tl from-red-100 to-red-200 rounded-xl p-6 w-[90%] max-w-2xl shadow-2xl relative">
+                <div className="fixed inset-0 bg-black/80 bg-opacity-50 flex items-center justify-center z-50 max-h-screen">
+                <div className="bg-gradient-to-tl from-red-100 to-red-200 rounded-xl p-6 w-[90%] max-w-2xl shadow-2xl relative max-h-[90%] overflow-y-auto">
                     {/* Close Button */}
                     <button
-                    className="absolute top-3 right-3 scale-125 text-red-600 text-xl hover:text-sky-500 font-bold hover:rotate-90 duration-500 cursor-pointer border  rounded-full h-7 w-7 flex items-center justify-center"
+                    className="fixed  scale-125 text-red-600 text-xl hover:text-sky-500 font-bold hover:rotate-90 duration-500 cursor-pointer border  rounded-full h-7 w-7 flex items-center justify-center"
                     onClick={() => {
                         setShowModal(false);
                         setSelectedDonor(null);

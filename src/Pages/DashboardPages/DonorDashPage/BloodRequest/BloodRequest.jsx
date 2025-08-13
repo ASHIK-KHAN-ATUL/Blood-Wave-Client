@@ -12,6 +12,17 @@ const BloodRequest = () => {
     const [selectedRequest, setSelectedRequest] = useState(null);
     const axiosSecure = useAxiosSecure();
 
+    const{data:mainUser={}} = useQuery({
+            queryKey : [user?.email, 'mainUser'],
+            queryFn: async() => {
+                const res = await axiosSecure.get(`/users/user/profile/${user?.email}`);
+                return res.data;
+          }
+    })
+    // console.log(mainUser)
+
+    const donorId = mainUser?._id;
+
     const {data: requests=[], isLoading, isError, refetch} = useQuery({
         queryKey: ['request', user?.email],
         enabled: !!user?.email,
@@ -30,7 +41,7 @@ const BloodRequest = () => {
       console.log(id)
       console.log(status)
 
-      const res = await axiosSecure.patch(`/blood-requests/${id}`, {status});
+      const res = await axiosSecure.patch(`/blood-requests/${id}`, {status,donorId});
       if(res.data.modifiedCount > 0){
         toast.info(`You ${status} the blood request`);
         refetch();
@@ -41,7 +52,7 @@ const BloodRequest = () => {
 
 
     return (
-        <div className="p-4">
+        <div className="p-4 text-black py-20 font-semibold">
             <h2 className="text-2xl font-bold mb-4">All Users ({requests.length})</h2>
 
             <div className="overflow-x-auto max-h-screen overflow-y-auto">

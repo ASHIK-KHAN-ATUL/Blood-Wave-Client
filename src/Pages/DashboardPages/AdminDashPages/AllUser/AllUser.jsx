@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { Helmet } from 'react-helmet';
+import CountUp from 'react-countup';
 
 const AllUser = () => {
 
@@ -18,7 +19,14 @@ const AllUser = () => {
     })
     // console.log(allUser);
 
-    if (isLoading) return <p className="text-center">Loading...</p>;
+    if (isLoading){
+                return (
+            <div className="flex flex-col justify-center items-center py-10 min-h-screen ">
+                <p className='text-red-500 font-semibold text-2xl'>Loading All User Page</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
+            </div>
+        )
+    }
 
     const handleChangeStatus = async(id) => {
         // console.log(id);
@@ -60,7 +68,7 @@ const AllUser = () => {
     }
 
     return (
-        <div className="p-4">
+        <div className="p-4 text-black">
 
         <Helmet>
             <title>All Users | Blood Wave Admin Dashboard</title>
@@ -75,7 +83,7 @@ const AllUser = () => {
             <link rel="canonical" href="https://blood-wave.netlify.app" />
         </Helmet>
 
-            <h2 className="text-2xl font-bold mb-4">All Users ({allUser.length})</h2>
+            <h2 className="text-xl font-bold mb-4 text-right">All Users (<CountUp end={allUser.length} duration={2} />)</h2>
 
             <div className="overflow-x-auto max-h-screen overflow-y-auto">
                 <table className="table  w-full border text-black text-sm">

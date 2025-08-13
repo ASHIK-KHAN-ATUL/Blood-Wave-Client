@@ -27,7 +27,7 @@ const BecomeDonor = () => {
 
     const bloodGroups = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
 
-    const {data:mainUser=[]} = useQuery({
+    const {data:mainUser=[], isLoading} = useQuery({
         queryKey: ['mainUser'],
         enabled: !!user?.email,
         queryFn : async()=>{
@@ -36,6 +36,15 @@ const BecomeDonor = () => {
         }
     })
     // console.log("mainUser:", mainUser);
+
+    if (isLoading){
+                return (
+            <div className="flex flex-col justify-center items-center py-10 min-h-screen ">
+                <p className='text-red-500 font-semibold text-2xl'>Loading Become Donor Page</p>
+                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
+            </div>
+        )
+    }
 
     const onSubmit = data => {
         data.name = mainUser.name;
@@ -57,7 +66,7 @@ const BecomeDonor = () => {
     };
 
     return (
-    <div className=" md:max-w-3xl m-2 md:mx-auto p-6 bg-gradient-to-br to-rose-400 from-red-200   shadow-lg md:rounded-md  md:my-10 text-black">
+    <div className=" md:max-w-3xl m-2 md:mx-auto p-6 bg-gradient-to-br from-[#fa5d5d62] via-[#ffe5f183] to-[#b7f5f59a] shadow-lg md:rounded-md  md:my-10 text-black">
 
       <Helmet>
         <title>Become a Blood Donor | Blood Wave</title>

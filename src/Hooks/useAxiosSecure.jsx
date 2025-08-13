@@ -4,6 +4,7 @@ import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
     baseURL: 'https://blood-wave-server-six.vercel.app'
+    // baseURL: 'http://localhost:5000'
 })
 
 const useAxiosSecure = () => {
@@ -13,7 +14,7 @@ const useAxiosSecure = () => {
 
     axiosSecure.interceptors.request.use(function(config){
         const token = localStorage.getItem('access-token');
-        console.log('Request stoped by interceptors', token);
+        // console.log('Request stoped by interceptors', token);
         config.headers.authorization = `Bearer ${token}`
         return config ;
     }, function (error){

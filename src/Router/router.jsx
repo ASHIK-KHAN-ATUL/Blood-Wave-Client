@@ -17,6 +17,9 @@ import ManageDonor from '../Pages/DashboardPages/AdminDashPages/ManageDonor/Mana
 import MyBloodRequest from '../Pages/DashboardPages/MemberDashPage/MyBloodRequest/MyBloodRequest';
 import BloodRequest from '../Pages/DashboardPages/DonorDashPage/BloodRequest/BloodRequest';
 import RequestStatus from '../Pages/DashboardPages/DonorDashPage/RequestStatus/RequestStatus';
+import DashboardLay from '../Layout/DashboardLayout/DashboardLay';
+import MyTask from '../Pages/DashboardPages/DonorDashPage/MyTask/MyTask';
+import MyCompletedTask from '../Pages/DashboardPages/DonorDashPage/MyCompletedTask/MyCompletedTask';
 
 const router = createBrowserRouter([
   {
@@ -43,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path:"/dashboard",
-    element: <PrivetRoute><DashboardLayout></DashboardLayout></PrivetRoute>,
+    element: <PrivetRoute><DashboardLay></DashboardLay></PrivetRoute>,
     children: [
       {
         path:'profile',
@@ -77,6 +80,14 @@ const router = createBrowserRouter([
       {
         path: 'blood-request-status',
         element: <RequestStatus></RequestStatus>
+      },
+      {
+        path: 'mytask',
+        element: <MyTask></MyTask>
+      },
+      {
+        path: 'task/completed',
+        element: <MyCompletedTask></MyCompletedTask>
       }
     ]
   }

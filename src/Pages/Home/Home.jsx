@@ -10,7 +10,7 @@ const Home = () => {
         <div>
 
             <Helmet>
-                <title>Blood Wave || Home</title>
+                <title>Blood Wave - Donate Blood, Save Lives Easily</title>
                 <meta name="description" content="Blood Wave homepage to find blood donors easily." />
             </Helmet>
 

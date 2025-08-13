@@ -24,7 +24,8 @@ const ProfilePage = () => {
 
     if (isLoading){
                 return (
-            <div className="flex justify-center items-center py-10 max-h-screen">
+            <div className="flex flex-col justify-center items-center py-10 min-h-screen ">
+                <p className='text-red-500 font-semibold text-2xl'>Loading Profile Page</p>
                 <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
             </div>
         )
@@ -39,7 +40,7 @@ const ProfilePage = () => {
     }
 
     return (
-        <div className='p-2'>
+        <div className='p-2 text-black'>
 
 
             <Helmet>
@@ -56,7 +57,7 @@ const ProfilePage = () => {
             </Helmet>
 
 
-            <div className="max-w-3xl mx-auto p-6 bg-gradient-to-br from-red-500/50 via-white/50  to-sky-500/50 rounded shadow-md  mt-10 relative">
+            <div className="max-w-3xl mx-auto p-6 bg-gradient-to-br from-[#eb464662] via-[#fcc7df83] to-[#9cf5f59a] rounded shadow-md  mt-10 relative">
 
             {/* edit btn */}
             <div className='absolute top-1 right-1'>
@@ -70,15 +71,15 @@ const ProfilePage = () => {
                     className="w-32 h-32 rounded-full object-cover mb-4"
                 />
                 <h2 className="text-2xl font-semibold">{mainUser.name}</h2>
-                <p className="text-gray-600">{mainUser.email}</p>
-                <p className="text-sm text-blue-600 capitalize mt-1">{mainUser.role}</p>
+                <p className="">{mainUser.email}</p>
+                <p className="text-sm text-blue-600 font-semibold capitalize mt-1">{mainUser.role}</p>
                 {
                     mainUser.role === 'donor' && mainUser.status === 'blocked' ?  
                     <p className='text-xs'>"You Are Blocked By Admin"</p> : ''
                 }
             </div>
 
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-800">
+            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-sm ">
                 <p><strong>Status:</strong> {mainUser.status}</p>
                 <p><strong>Phone:</strong> {mainUser.phone}</p>
                 <p><strong>Phone Visibility:</strong> {mainUser.phoneVisibility}</p>

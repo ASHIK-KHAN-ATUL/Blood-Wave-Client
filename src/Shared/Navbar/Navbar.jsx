@@ -27,9 +27,12 @@ const Navbar = () => {
         <div className="bg-[#fff1f1] text-[#1e1e1e] shadow-md sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 py-1 flex items-center justify-between">
                 {/* Logo */}
-                <Link to="/" className="text-2xl font-bold text-[#e50914] flex items-center gap-2">
-                    <img className='h-10 ' src={logo} alt="logo" />
-                    <p>BloodWave</p>
+                <Link 
+                    to="/" 
+                    title="Blood Wave - Donate Blood, Save Lives Easily" 
+                    className="text-2xl font-bold text-[#e50914] flex items-center gap-2">
+                        <img className='h-10 ' src={logo} alt="Blood Wave Logo - Donate Blood, Save Lives Easily"  />
+                        <p>Blood Wave</p>
                 </Link>
 
                 {/* Desktop Menu */}
