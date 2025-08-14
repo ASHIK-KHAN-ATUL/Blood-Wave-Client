@@ -12,14 +12,14 @@ const BloodRequest = () => {
     const [selectedRequest, setSelectedRequest] = useState(null);
     const axiosSecure = useAxiosSecure();
 
-    const{data:mainUser={}} = useQuery({
+    const{data:mainUser={}, refetch:refetchUser} = useQuery({
             queryKey : [user?.email, 'mainUser'],
             queryFn: async() => {
                 const res = await axiosSecure.get(`/users/user/profile/${user?.email}`);
                 return res.data;
           }
     })
-    // console.log(mainUser)
+    // console.log(mainUser);
 
     const donorId = mainUser?._id;
 
@@ -34,17 +34,42 @@ const BloodRequest = () => {
     // console.log(requests);
 
 
-    if (isLoading) return <div>Loading your requests...</div>;
+    if (isLoading) {
+        return (
+            <div className="flex flex-col justify-center items-center py-10 min-h-screen">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
+            </div>
+        );
+    }
+
+    if (requests.length <1) {
+        return (
+        <div className="flex flex-col justify-center items-center py-10 min-h-screen">
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" 
+                alt="No data" 
+                className="w-24 h-24 mb-4 opacity-70"
+            />
+            <p className="text-gray-500 text-lg font-medium">No requests found</p>
+        </div>
+        );
+    }
+
     if (isError) return <div>Error loading requests.</div>;
 
+
+
+
     const handleStatusChange = async(id, status) => {
-      console.log(id)
-      console.log(status)
+      // console.log(id)
+      // console.log(status)
 
       const res = await axiosSecure.patch(`/blood-requests/${id}`, {status,donorId});
-      if(res.data.modifiedCount > 0){
-        toast.info(`You ${status} the blood request`);
+      if(res.data.requestUpdateResult.modifiedCount > 0){
+        toast.success(`You ${status} the blood request`);
         refetch();
+        refetchUser();
+        console.log(res.data)
       }else{
         toast.error('Failed to done your action')
       }
@@ -147,13 +172,18 @@ const BloodRequest = () => {
                   <div className="flex justify-center gap-6">
                     <button
                       onClick={() => {
+                        if(mainUser.availability === 'unavailable'){
+                          refetchUser();
+                          toast.warning('You Already Accept Another Blood Request');
+                          return;
+                        }
                         handleStatusChange(selectedRequest._id, 'accepted');
                         setSelectedRequest(null);
                       }}
                       disabled={selectedRequest.status === 'accepted'}
                       className={`px-6 py-2 rounded-xl font-semibold text-white shadow-md transition-colors duration-200 ${
-                        selectedRequest.status === 'accepted'
-                          ? 'bg-green-300 cursor-not-allowed'
+                        selectedRequest.status === 'accepted' || mainUser.availability === 'unavailable'
+                          ? 'bg-yellow-400 cursor-not-allowed'
                           : 'bg-green-600 hover:bg-green-700'
                       }`}
                     >

@@ -21,29 +21,32 @@ const RequestStatus = () => {
     })
     // console.log(requests)
 
-        if (isLoading){
-                return (
-            <div className="flex flex-col justify-center items-center py-10 min-h-screen ">
-                <p className='text-red-500 font-semibold text-2xl'>Loading My Request Page</p>
-                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
-            </div>
-        )
-    }
-
-      // Filter requests based on filterStatus
+    // Filter requests based on filterStatus
     const filteredRequests = filterStatus === 'all' ? requests : requests.filter((req) => req.status === filterStatus);
 
     if (isLoading) {
         return (
             <div className="flex flex-col justify-center items-center py-10 min-h-screen">
-            <p className="text-red-500 font-semibold text-2xl mb-4">Loading Request Status Page...</p>
             <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
             </div>
         );
     }
 
-
     if (isError) return <div className="text-center text-red-600">Error loading requests.</div>;
+
+    if (requests.length < 1) {
+        return (
+        <div className="flex flex-col justify-center items-center py-10 min-h-screen">
+            <img 
+                src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" 
+                alt="No data" 
+                className="w-24 h-24 mb-4 opacity-70"
+            />
+            <p className="text-gray-500 text-lg font-medium">No Requests Status Found</p>
+        </div>
+        );
+    }
+
 
 
     return (

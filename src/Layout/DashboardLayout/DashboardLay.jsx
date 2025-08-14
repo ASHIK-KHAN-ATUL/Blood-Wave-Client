@@ -20,7 +20,7 @@ const DashboardLay = () => {
                     <img className=' h-7 sm:h-10' src="https://i.ibb.co.com/wZWjWsKG/logo-blood-wave.png" alt="logo" />
             </label>
             </div>
-            <div className='w-full'>
+            <div className='w-full py-20'>
                 <Outlet></Outlet>
             </div>
             
