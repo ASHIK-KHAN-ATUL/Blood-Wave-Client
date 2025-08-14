@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
-    // baseURL: 'https://blood-wave-server-six.vercel.app'
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://blood-wave-server-six.vercel.app'
+    // baseURL: 'http://localhost:5000'
 })
 
 const useAxiosSecure = () => {
