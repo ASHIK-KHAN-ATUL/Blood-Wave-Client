@@ -4,6 +4,7 @@ import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import {  useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
+import CountUp from 'react-countup';
 
 const BloodRequest = () => {
     
@@ -77,8 +78,19 @@ const BloodRequest = () => {
 
 
     return (
-        <div className="p-4 text-black py-20 font-semibold">
-            <h2 className="text-2xl font-bold mb-4">All Users ({requests.length})</h2>
+        <div className="p-4 text-black font-semibold">
+          
+            <div className="bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 rounded-2xl shadow-lg p-6 text-center border border-purple-300 mb-6">
+              <h2 className="text-2xl font-bold text-purple-900 mb-2">
+                Blood Requests
+              </h2>
+              <p className="text-5xl font-extrabold text-red-600 drop-shadow-md">
+                <CountUp start={0} end={requests.length} duration={2.5} />
+              </p>
+              <p className="mt-2 text-gray-700">
+                Stay strong and help save lives ❤️
+              </p>
+            </div>
 
             <div className="overflow-x-auto max-h-screen overflow-y-auto">
                 <table className="table  w-full border text-black text-sm">

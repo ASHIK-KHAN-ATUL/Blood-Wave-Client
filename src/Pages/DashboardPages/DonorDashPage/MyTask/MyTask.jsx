@@ -19,7 +19,7 @@ const MyTask = () => {
             return res.data;
         }
     })
-    // console.log("Task",task);
+    console.log("Task",task);
 
     const {data: request,} = useQuery({
         queryKey: ['request', task?.bloodRequestId],
@@ -59,16 +59,11 @@ const MyTask = () => {
         return (
             <div className="flex flex-col justify-center items-center py-10 min-h-screen text-black">
                 <p className="font-semibold text-2xl mb-4">No active task found</p>
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-16 w-16 text-gray-500"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 17v-6a2 2 0 012-2h2a2 2 0 012 2v6m4 0H5" />
-                </svg>
+                <img 
+                    src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" 
+                    alt="No data" 
+                    className="w-24 h-24 mb-4 opacity-70"
+                />
                 <p className="mt-2">You currently have no assigned tasks.</p>
             </div>
         );
