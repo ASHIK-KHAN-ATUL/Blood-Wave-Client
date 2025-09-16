@@ -1,0 +1,7 @@
+.pic{
+    background-image: url('../../../assets/paralex.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

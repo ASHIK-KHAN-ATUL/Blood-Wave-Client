@@ -1,0 +1,8 @@
+# Allow all bots to crawl the entire site except dashboard pages
+User-agent: *
+Disallow: /dashboard/
+Disallow: /register
+Disallow: /login
+
+# Allow sitemap access
+Sitemap: https://blood-wave.netlify.app/sitemap.xml
