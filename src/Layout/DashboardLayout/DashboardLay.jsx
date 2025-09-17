@@ -79,6 +79,19 @@ const DashboardLay = () => {
               >
                 My Request
               </NavLink>
+
+              <NavLink
+                to={"/dashboard/bloodRecive/member"}
+                className={({ isActive }) =>
+                  ` duration-300 cursor-pointer bg-gradient-to-l from-red-500/50 to-rose-500/80 p-2 rounded-lg ${
+                    isActive
+                      ? "font-bold text-black scale-x-90 border-b-2 border-red-600 "
+                      : ""
+                  }`
+                }
+              >
+                Blood Recive
+              </NavLink>
             </div>
           )}
 
@@ -163,6 +176,18 @@ const DashboardLay = () => {
                 }
               >
                 Profile
+              </NavLink>
+              <NavLink
+                to={"/dashboard/overView/admin"}
+                className={({ isActive }) =>
+                  ` duration-300 cursor-pointer bg-gradient-to-l from-red-500/50 to-rose-500/80 p-2 rounded-lg ${
+                    isActive
+                      ? "font-bold text-black scale-x-90 border-b-2 border-red-600 "
+                      : ""
+                  }`
+                }
+              >
+                OverView
               </NavLink>
               <NavLink
                 to={"/dashboard/alluser/admin"}

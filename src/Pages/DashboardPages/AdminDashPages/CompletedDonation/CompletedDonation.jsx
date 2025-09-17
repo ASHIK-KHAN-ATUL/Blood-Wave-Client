@@ -6,28 +6,36 @@ import { motion } from "framer-motion";
 const CompletedDonation = () => {
   const axiosSecure = useAxiosSecure();
 
-  const { data: completedDonation = [] } = useQuery({
+  const { data: completedDonation = [], isLoading } = useQuery({
     queryKey: ["completedDonation"],
     queryFn: async () => {
       const res = await axiosSecure.get("/admin/allCompletedBloodDonation");
       return res.data;
     },
   });
-  console.log(completedDonation);
+  // console.log(completedDonation);
+
+  if (isLoading) {
+    return (
+      <div className="flex flex-col justify-center items-center py-10 min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-4 border-t-red-500 border-white"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
       {completedDonation.map((donation, index) => (
         <motion.div
           key={donation._id}
-          className="bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 rounded-2xl shadow-lg p-8 border border-purple-300 relative text-black"
+          className="bg-gradient-to-r from-pink-200 via-purple-200 to-blue-200 rounded-2xl shadow-lg p-8 border border-purple-300 relative text-black group cursor-pointer"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: index * 0.1 }}
         >
           {/* Small ID */}
           <span className="absolute top-2 right-2 text-xs text-gray-800">
-            ID: {donation._id.slice(0, 6)}
+            ID: {donation._id}
           </span>
 
           {/* Donor & Receiver Pictures */}
@@ -44,7 +52,7 @@ const CompletedDonation = () => {
             </div>
 
             {/* Blood transfer symbol */}
-            <div className="flex items-center justify-center bg-white text-red-600 rounded-full w-10 h-10 animate-bounce">
+            <div className="flex items-center justify-center bg-white text-red-600 rounded-full w-10 h-10 group-hover:animate-bounce">
               💉
             </div>
 

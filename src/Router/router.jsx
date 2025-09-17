@@ -19,6 +19,8 @@ import DashboardLay from "../Layout/DashboardLayout/DashboardLay";
 import MyTask from "../Pages/DashboardPages/DonorDashPage/MyTask/MyTask";
 import MyCompletedTask from "../Pages/DashboardPages/DonorDashPage/MyCompletedTask/MyCompletedTask";
 import CompletedDonation from "../Pages/DashboardPages/AdminDashPages/CompletedDonation/CompletedDonation";
+import OverView from "../Pages/DashboardPages/AdminDashPages/OverView/OverView";
+import BloodReceived from "../Pages/DashboardPages/MemberDashPage/MyBloodRequest/Blood Received/BloodReceived";
 
 const router = createBrowserRouter([
   {
@@ -68,12 +70,20 @@ const router = createBrowserRouter([
         element: <ManageDonor></ManageDonor>,
       },
       {
+        path: "overView/admin",
+        element: <OverView></OverView>,
+      },
+      {
         path: "completedDonation/admin",
         element: <CompletedDonation></CompletedDonation>,
       },
       {
         path: "becomeDonor",
         element: <BecomeDonor></BecomeDonor>,
+      },
+      {
+        path: "bloodRecive/member",
+        element: <BloodReceived></BloodReceived>,
       },
       {
         path: "profile/edit",
