@@ -6,18 +6,6 @@ Live Site: [Blood Wave](https://blood-wave.netlify.app)
 
 ---
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Challenges](#challenges)
-- [Tech Stack](#tech-stack)
-- [Setup](#setup)
-- [Usage](#usage)
-- [Screenshots](#screenshots)
-- [License](#license)
-
----
-
 ## Overview
 Blood Wave allows users to:
 - Register and become donors
